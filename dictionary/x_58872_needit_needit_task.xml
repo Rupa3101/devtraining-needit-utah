@@ -17,16 +17,17 @@
         <element attributes="edge_encryption_enabled=true" label="Short description" mandatory="true" max_length="40" name="short_description" type="string"/>
         <element choice="1" default="4" label="State" max_length="40" name="state" type="integer">
             <choice>
-                <element inactive_on_update="false" label="Open" sequence="0" value="4"/>
+                <element inactive="true" inactive_on_update="true" label="Closed Complete" sequence="0" value="8"/>
+                <element inactive="true" inactive_on_update="true" label="Closed Incomplete" sequence="0" value="4"/>
+                <element inactive_on_update="false" label="Open" sequence="0" value="1"/>
                 <element inactive="true" inactive_on_update="true" label="Requested" sequence="0" value="13"/>
                 <element inactive="true" inactive_on_update="true" label="Awaiting Approval" sequence="1" value="14"/>
-                <element inactive_on_update="false" label="Work In Progress" sequence="1" value="5"/>
+                <element inactive_on_update="false" label="Work In Progress" sequence="1" value="2"/>
                 <element inactive="true" inactive_on_update="true" label="Approved" sequence="2" value="15"/>
-                <element inactive_on_update="false" label="Overdue" sequence="2" value="2"/>
+                <element inactive_on_update="false" label="Closed Complete" sequence="2" value="3"/>
                 <element inactive="true" inactive_on_update="true" label="Awaiting Feedback" sequence="3" value="16"/>
-                <element inactive_on_update="false" label="Closed Complete" sequence="3" value="8"/>
-                <element inactive_on_update="false" label="Closed Incomplete" sequence="4" value="6"/>
-                <element inactive_on_update="false" label="Closed Skipped" sequence="5" value="3"/>
+                <element inactive_on_update="false" label="Closed Incomplete" sequence="3" value="6"/>
+                <element inactive_on_update="false" label="Closed Skipped" sequence="4" value="5"/>
             </choice>
         </element>
         <element attributes="edge_encryption_enabled=true" label="Work notes" max_length="4000" name="work_notes" type="journal"/>

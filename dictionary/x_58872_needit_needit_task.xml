@@ -3,6 +3,7 @@
         <element attributes="encode_utf8=false" label="Assigned to" max_length="32" name="assigned_to" reference="sys_user" type="reference"/>
         <element attributes="edge_encryption_enabled=true" label="Description" max_length="4000" name="description" type="string"/>
         <element attributes="edge_encryption_enabled=true" label="Due Date" max_length="40" name="duedate" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" label="Due Date" max_length="40" name="due_date" type="glide_date_time"/>
         <element attributes="edge_encryption_enabled=true" default="javascript:getNextObjNumberPadded();" display="true" dynamic_default_value="fdcb83a85f220100a9ad2572f2b4773c" label="Number" max_length="40" name="number" type="string" u_number="7" use_dynamic_default="true"/>
         <element attributes="edge_encryption_enabled=true" choice="1" default="4" label="Priority" max_length="40" name="priority" type="string">
             <choice>
@@ -28,6 +29,7 @@
                 <element inactive_on_update="false" label="Closed Skipped" sequence="5" value="3"/>
             </choice>
         </element>
+        <element attributes="edge_encryption_enabled=true" label="Work notes" max_length="4000" name="work_notes" type="journal"/>
         <index name="index">
             <element name="assigned_to"/>
         </index>

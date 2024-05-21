@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element audit="true" db_object_id="90da02c697250210703bfefce053af9d" label="NeedIt" max_length="40" name="x_58872_needit_needit" type="collection" u_number="100152">
         <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element attributes="encode_utf8=false" label="Assigned to" max_length="32" name="assigned_to" reference="sys_user" type="reference"/>
         <element attributes="edge_encryption_enabled=true" label="Additional comments" max_length="4000" name="comments" type="journal"/>
         <element attributes="edge_encryption_enabled=true" label="Description" max_length="4000" name="description" type="string"/>
         <element attributes="edge_encryption_enabled=true" label="Due date" max_length="40" name="duedate" type="glide_date_time"/>
@@ -16,6 +17,7 @@
                 <element inactive_on_update="false" label="5 - Planning" sequence="4" value="5"/>
             </choice>
         </element>
+        <element attributes="encode_utf8=false" label="Requested for" mandatory="true" max_length="32" name="requested_for" reference="sys_user" type="reference"/>
         <element attributes="edge_encryption_enabled=true" label="Short description" max_length="160" name="short_description" type="string"/>
         <element choice="1" label="State" max_length="40" name="state" type="integer">
             <choice>
@@ -27,7 +29,17 @@
                 <element inactive_on_update="false" label="Withdrawn" sequence="5" value="8"/>
             </choice>
         </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Approval" max_length="40" name="u_approval" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Requested" sequence="0" value="requested"/>
+                <element inactive_on_update="false" label="Not Yet Requested" sequence="1" value="not yet requested"/>
+                <element inactive_on_update="false" label="Approved" sequence="2" value="approved"/>
+                <element inactive_on_update="false" label="Pending" sequence="3" value="pending"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="4" value="cancelled"/>
+            </choice>
+        </element>
         <element attributes="edge_encryption_enabled=true" label="New Date/Time" max_length="40" name="u_glide_date_time_9" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" label="Other" max_length="40" name="u_other" type="string"/>
         <element attributes="encode_utf8=false" label="Requested for" mandatory="true" max_length="32" name="u_requested_for" reference="sys_user" type="reference"/>
         <element attributes="edge_encryption_enabled=true" label="Requested for email" mandatory="true" max_length="40" name="u_requested_for_email" type="string"/>
         <element attributes="edge_encryption_enabled=true" choice="1" default="legal" label="Request type" mandatory="true" max_length="40" name="u_request_type" type="string">
@@ -36,12 +48,13 @@
                 <element inactive_on_update="false" label="Facilities" sequence="1" value="facilities"/>
                 <element inactive_on_update="false" label="Legal" sequence="2" value="legal"/>
                 <element inactive_on_update="false" label="Your Department Choice" sequence="3" value="your department choice"/>
+                <element inactive_on_update="false" label="Other" sequence="4" value="other"/>
             </choice>
         </element>
         <element attributes="edge_encryption_enabled=true" choice="1" default="legal 1" label="What needed" mandatory="true" max_length="40" name="u_what_needed" type="string">
             <choice>
                 <element inactive_on_update="false" label="Human Resources 1" sequence="0" value="hr1"/>
-                <element inactive_on_update="false" label="Other" sequence="0" value="Other"/>
+                <element inactive="true" inactive_on_update="true" label="Other" sequence="0" value="Other"/>
                 <element inactive_on_update="false" label="Human Resources 2" sequence="1" value="hr2"/>
                 <element inactive_on_update="false" label="Facilities 1" sequence="2" value="facilities1"/>
                 <element inactive_on_update="false" label="Facilities 2" sequence="3" value="facilities2"/>
@@ -52,11 +65,18 @@
             </choice>
         </element>
         <element attributes="edge_encryption_enabled=true" label="When needed" mandatory="true" max_length="40" name="u_when_needed" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" label="When needed" mandatory="true" max_length="40" name="when_needed" type="glide_date_time"/>
         <element attributes="edge_encryption_enabled=true" label="Work notes" max_length="4000" name="work_notes" type="journal"/>
         <index name="index">
-            <element name="opened_by"/>
+            <element name="assigned_to"/>
         </index>
         <index name="index2">
+            <element name="opened_by"/>
+        </index>
+        <index name="index3">
+            <element name="requested_for"/>
+        </index>
+        <index name="index4">
             <element name="u_requested_for"/>
         </index>
     </element>
